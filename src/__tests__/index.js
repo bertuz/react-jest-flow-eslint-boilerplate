@@ -1,30 +1,16 @@
 // @flow
 import { waitFor } from '@testing-library/dom';
-import { renderHook, act } from '@testing-library/react-hooks';
-import useGoogleApi from '../index';
+import { render, screen } from '@testing-library/react';
+import React from "react";
+import MyComponent from "../index";
 
-describe('happy case, returned value', () => {
-  it('returns the loaded object once loaded', async () => {
+describe('happy case', () => {
+  it('shows the header title', async () => {
     expect.hasAssertions();
-    const { result } = renderHook(() => useGoogleApi('api'));
-    expect(result.current.google).toBeUndefined();
+    render(<MyComponent />);
 
     await waitFor(() =>
-      expect(document.getElementsByTagName('head')[0].children[0]).toBeTruthy(),
+        expect(screen.findByText('My App')).toBeTruthy()
     );
-
-    await act(async () => {
-      window.google = {
-        maps: {
-          Map() {},
-        },
-      };
-      const event = new Event('load');
-
-      document.getElementsByTagName('head')[0].children[0].dispatchEvent(event);
-    });
-
-    await waitFor(() => expect(result.current.google).toBe(window.google));
-    await waitFor(() => expect(result.current.error).toBeUndefined());
   });
 });

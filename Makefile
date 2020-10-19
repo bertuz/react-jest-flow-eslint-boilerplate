@@ -13,4 +13,4 @@ test: install
 	@yarn lint && yarn flow && yarn jest
 
 build: test
-	@yarn build-lib && yarn copy-flow-sources && yarn copy-typescript-definitions
+	@yarn build
