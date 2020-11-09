@@ -16,7 +16,7 @@ const PORT = 3001;
 const app = express();
 
 app.get('/back', (req, res) => {
-  res.send('Hello World!');
+  res.json({ name: 'Test name' });
 });
 
 app.use(

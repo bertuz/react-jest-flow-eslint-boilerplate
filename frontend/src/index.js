@@ -12,10 +12,22 @@ const useStyles = createUseStyles({
 
 const MyComponent = (): React.Node => {
   const classes = useStyles();
-
+  const [response, setResponse] = React.useState(null);
+  React.useEffect(() => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = () => {
+      if (xhttp.readyState === 4 && xhttp.status === 200) {
+        setResponse(JSON.parse(xhttp.responseText).name);
+      }
+    };
+    xhttp.open('GET', '/back', true);
+    xhttp.setRequestHeader('Content-type', 'application/json');
+    xhttp.send();
+  });
   return (
     <div>
       <h1 className={classes.myLabel}>Hello, world!</h1>
+      {(response === null)? "loading..." : response}
     </div>
   );
 };
