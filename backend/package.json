@@ -1,19 +1,20 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "boilerplate",
+  "version": "0.9.0",
+  "description": "Boilerplate",
+  "main": "",
   "license": "MIT",
   "scripts": {
     "watch": "node src/index.js",
-    "dev": "echo \"no backend generated yet\""
+    "dev": "echo \"no backend generated yet\"",
+    "build": "echo \"no backend generated yet\""
   },
   "dependencies": {
     "express": "^4.17.1",
     "module": "^1.2.5",
     "serve-static": "^1.14.1",
     "webpack-dev-middleware": "^4.0.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-node-externals": "^2.5.2"
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {}
 }

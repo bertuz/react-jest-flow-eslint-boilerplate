@@ -1,27 +1,11 @@
 {
-  "name": "ya-google-maps-react",
-  "version": "1.0.1",
-  "description": "A lightweight hook-based library to use google maps on react projects",
-  "main": "dist/index.js",
-  "files": [
-    "dist/index.js",
-    "dist/index.js.flow",
-    "dist/index.d.ts"
-  ],
-  "scripts": {
-    "build": "webpack --env prod",
-    "test": "jest",
-    "lint": "eslint ./frontend/src",
-    "lintfix": "eslint ./src --fix",
-    "flow": "flow"
-  },
-  "keywords": [
-    "google",
-    "maps",
-    "react",
-    "hook"
-  ],
-  "author": "Matteo Bertamini <matteoappfarmer@gmail.com>",
+  "name": "boilerplate",
+  "version": "0.9.0",
+  "description": "Boilerplate",
+  "main": "",
+  "scripts": {},
+  "keywords": [],
+  "author": "Matteo Bertamini <bertamini.matteo@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "flow-typed": "^3.2.1",
