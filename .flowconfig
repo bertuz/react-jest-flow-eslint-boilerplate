@@ -1,5 +1,6 @@
 [ignore]
 .*/node_modules/.*
+!.*/frontend/node_modules/react-jss/.*
 
 [include]
 

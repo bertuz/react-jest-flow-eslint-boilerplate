@@ -1,16 +1,21 @@
 .PHONY: test build
 
-install:
-	@yarn
+install-frontend:
+	cd frontend && yarn
+
+install-backend:
+	cd backend && yarn
+
+install: install-backend install-frontend
 
 watch: install
-	@yarn watch
+	cd backend && yarn watch
 
 dev: install
-	@yarn dev
+	cd frontend && yarn dev
 
 test: install
-	@yarn lint && yarn flow && yarn jest
+	cd frontend && yarn lint && yarn flow && yarn jest
 
 build: test
-	@yarn build
+	cd frontend && yarn build

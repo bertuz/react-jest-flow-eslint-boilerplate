@@ -8,7 +8,13 @@
     "dist/index.js.flow",
     "dist/index.d.ts"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "webpack --env prod",
+    "test": "jest",
+    "lint": "eslint ./frontend/src",
+    "lintfix": "eslint ./src --fix",
+    "flow": "flow"
+  },
   "keywords": [
     "google",
     "maps",
@@ -18,6 +24,7 @@
   "author": "Matteo Bertamini <matteoappfarmer@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "flow-typed": "^3.2.1",
     "jss": "^10.4.0",
     "react": "^16.13.1",
     "react-jss": "^10.4.0"
