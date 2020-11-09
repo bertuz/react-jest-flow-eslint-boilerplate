@@ -4,8 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist/front'),
   },
   module: {
     rules: [
@@ -20,8 +19,8 @@ module.exports = {
               '@babel/preset-react',
               '@babel/preset-flow',
             ],
-            plugins: []
-          }
+            plugins: [],
+          },
         },
       },
     ],

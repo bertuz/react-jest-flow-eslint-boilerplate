@@ -1,4 +1,3 @@
-// https://webpack.js.org/guides/development/#using-webpack-dev-middleware
 const express = require('express');
 const server = require('https');
 const { readFileSync } = require('fs');
@@ -20,11 +19,9 @@ app.get('/back', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use('/bundles', serveStatic(join(__dirname, '../../dist')));
-
 app.use(
   require('webpack-dev-middleware')(webpackCompiler, {
-    publicPath: '/',
+    publicPath: '/app',
     writeToDisk: true,
     serverSideRender: false,
   }),
@@ -35,6 +32,7 @@ app.use(
     path: '/__webpack_hmr',
   }),
 );
+app.use('/', serveStatic(join(__dirname, '../../dev/static')));
 
 /* eslint-disable no-console */
 const handleListen = () => {
