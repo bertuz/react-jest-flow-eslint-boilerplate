@@ -10,6 +10,11 @@ const useStyles = createUseStyles({
   },
 });
 
+if (module.hot) {
+  console.log(`hot-reloaded @ ${new Date()}`);
+  module.hot.accept();
+}
+
 const MyComponent = (): React.Node => {
   const classes = useStyles();
   const [response, setResponse] = React.useState(null);
@@ -27,7 +32,7 @@ const MyComponent = (): React.Node => {
   return (
     <div>
       <h1 className={classes.myLabel}>Hello, world!</h1>
-      {(response === null)? "loading..." : response}
+      {response === null ? 'loading...' : response}
     </div>
   );
 };
