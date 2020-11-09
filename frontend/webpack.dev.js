@@ -1,6 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
-const ReactRootPlugin = require('html-webpack-root-plugin');
 const path = require('path');
 
 module.exports = {
@@ -13,11 +10,5 @@ module.exports = {
     path: path.resolve(__dirname, '../dist/frontend'),
   },
   devtool: 'inline-source-map',
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'App',
-    }),
-    // new HtmlWebpackRootPlugin(),
-    //   new ReactRootPlugin()
-  ],
+  plugins: [],
 };

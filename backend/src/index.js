@@ -5,9 +5,9 @@ const {readFileSync} = require('fs');
 const serveStatic = require('serve-static');
 const {join} = require('path');
 const webpack = require('webpack');
-const webpackConfig = require('../../webpack.config');
+const webpackConfig = require(join(__dirname,'../../frontend/webpack.config'));
 
-const webpackCompiler = webpack(webpackConfig('dev'));
+const webpackCompiler = webpack(webpackConfig('watch'));
 
 const key = readFileSync(join(__dirname, '../../dev/cert/localhost.key'));
 const cert = readFileSync(join(__dirname, '../../dev/cert/localhost.crt'));

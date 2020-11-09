@@ -1,11 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-// eslint-disable-next-line import/no-extraneous-dependencies
-const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const { merge } = require('webpack-merge');
 
-module.exports = {
+const devConfig = require(`./webpack.dev`);
+
+module.exports = merge(devConfig, {
   mode: 'development',
   entry: {
     app: [
@@ -14,10 +13,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'App',
-    }),
-    new HtmlWebpackRootPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
@@ -25,4 +20,4 @@ module.exports = {
     compress: true,
     port: 9000,
   },
-};
+});
