@@ -11,8 +11,13 @@ install: install-backend install-frontend
 watch: install
 	cd backend && yarn watch
 
-dev: install
+dev-front:
 	cd frontend && yarn dev
+
+dev-back:
+	cd backend && yarn dev
+
+dev: install dev-front dev-back
 
 test: install
 	cd frontend && yarn lint && yarn flow && yarn jest

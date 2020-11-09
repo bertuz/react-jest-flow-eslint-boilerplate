@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "watch": "node src/index.js"
+    "watch": "node src/index.js",
+    "dev": "echo \"no backend generated yet\""
   },
   "dependencies": {
     "express": "^4.17.1",
