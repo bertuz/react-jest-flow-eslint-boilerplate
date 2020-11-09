@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 const MyComponent = (): React.Node => {
   return (
     <div>
-      <h1>My App</h1>
+      <h1>Dammi tre parole!</h1>
     </div>
   );
 };

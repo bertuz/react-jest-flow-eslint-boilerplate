@@ -3,16 +3,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
-  devtool: 'inline-source-map',
+  entry: {
+    app: [
+      path.join(__dirname, 'src/index.js'),
+      'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true',
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'App',
     }),
     new HtmlWebpackRootPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),

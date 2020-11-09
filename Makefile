@@ -3,10 +3,10 @@
 install:
 	@yarn
 
-watch:
+watch: install
 	@yarn watch
 
-dev:
+dev: install
 	@yarn dev
 
 test: install
