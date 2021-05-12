@@ -9,6 +9,7 @@ install-backend:
 install: install-backend install-frontend
 
 watch: install
+
 	cd backend && yarn watch
 
 dev-front:

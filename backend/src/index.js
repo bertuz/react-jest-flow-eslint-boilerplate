@@ -1,15 +1,21 @@
-const express = require('express');
-const server = require('https');
-const { readFileSync } = require('fs');
-const serveStatic = require('serve-static');
-const { join } = require('path');
-const webpack = require('webpack');
-const webpackConfig = require(join(__dirname, '../../frontend/webpack.config'));
+import express from 'express';
+import {readFileSync}  from 'fs';
+import spdy from 'spdy';
+import server from 'https';
+import webpack from 'webpack';
+import serveStatic from 'serve-static';
+import webpackConfig from '../../frontend/webpack.config.js';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 
+const __filename = new URL('', import.meta.url).pathname;
+// Will contain trailing slash
+const __dirname = new URL('.', import.meta.url).pathname;
+//
 const webpackCompiler = webpack(webpackConfig('watch'));
-
-const key = readFileSync(join(__dirname, '../../dev/cert/localhost.key'));
-const cert = readFileSync(join(__dirname, '../../dev/cert/localhost.crt'));
+//
+const key = readFileSync(__dirname + '../../dev/cert/localhost.key');
+const cert = readFileSync(__dirname + '../../dev/cert/localhost.crt');
 
 const HOSTNAME = '0.0.0.0'; // Necessary for NodeJS to not listen to IPv6
 const PORT = 3001;
@@ -20,7 +26,7 @@ app.get('/back', (req, res) => {
 });
 
 app.use(
-  require('webpack-dev-middleware')(webpackCompiler, {
+  webpackDevMiddleware(webpackCompiler, {
     publicPath: '/app',
     writeToDisk: true,
     serverSideRender: false,
@@ -28,11 +34,11 @@ app.use(
 );
 
 app.use(
-  require('webpack-hot-middleware')(webpackCompiler, {
+  webpackHotMiddleware(webpackCompiler, {
     path: '/__webpack_hmr',
   }),
 );
-app.use('/', serveStatic(join(__dirname, '../../dev/static')));
+app.use('/', serveStatic(__dirname + '../../dev/static'));
 
 /* eslint-disable no-console */
 const handleListen = () => {

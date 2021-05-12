@@ -1,0 +1,6 @@
+back:
+  build: .
+  volumes:
+    - "./:/app"
+  ports:
+    - "3030:3001"

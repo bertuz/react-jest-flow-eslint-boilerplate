@@ -33,6 +33,7 @@ const MyComponent = (): React.Node => {
     <div>
       <h1 className={classes.myLabel}>Hello, world!</h1>
       {response === null ? 'loading...' : response}
+
     </div>
   );
 };
