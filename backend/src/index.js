@@ -16,10 +16,13 @@ const webpackCompiler = webpack(webpackConfig('watch'));
 //
 const key = readFileSync(__dirname + '../../dev/cert/localhost.key');
 const cert = readFileSync(__dirname + '../../dev/cert/localhost.crt');
-
-const HOSTNAME = '0.0.0.0'; // Necessary for NodeJS to not listen to IPv6
 const PORT = 3001;
+
 const app = express();
+const options = {
+  key,
+  cert
+}
 
 app.get('/back', (req, res) => {
   res.json({ name: 'Test name' });
@@ -40,9 +43,13 @@ app.use(
 );
 app.use('/', serveStatic(__dirname + '../../dev/static'));
 
-/* eslint-disable no-console */
-const handleListen = () => {
-  console.log(`😊 listening at https://localhost:${PORT}!`);
-};
+spdy.createServer(options, app)
+  .listen(PORT, (error) => {
+    if (error) {
+      console.error(error)
+      return process.exit(1)
+    } else {
+      console.log(`😊 listening at https://localhost:${PORT}!`);
+    }
+  });
 
-server.createServer({ key, cert }, app).listen(PORT, HOSTNAME, handleListen);
